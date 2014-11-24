@@ -22,4 +22,4 @@ function cypher(statement) {
 	});
 }
 
-cypher('MATCH n RETURN n');
+cypher('MATCH (event)-[:HAPPENS_AT]-(loc1)-[:IS_IN]-(loc2)-[:AT]-(activity) RETURN event, activity, loc1, loc2');
