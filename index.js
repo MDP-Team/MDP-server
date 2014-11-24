@@ -1,4 +1,4 @@
-function cypher(statement) {
+(function (statement) {
 	require('request').post({
 		uri: 'http://localhost:7474/db/data/transaction/commit',
 		json: {
@@ -20,6 +20,4 @@ function cypher(statement) {
 
 		console.log('Server started at localhost:80!');
 	});
-}
-
-cypher('MATCH (event)-[:HAPPENS_AT]-(loc1)-[:IS_IN]-(loc2)-[:AT]-(activity) RETURN event, activity, loc1, loc2');
+})('MATCH (event)-[:HAPPENS_AT]-(loc1)-[:IS_IN]-(loc2)-[:AT]-(activity) RETURN event, activity, loc1, loc2');
