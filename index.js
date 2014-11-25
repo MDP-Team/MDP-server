@@ -13,9 +13,37 @@
 			console.log('Unable to create server!');
 		});
 
+		var data = data.body.results[0].data;
+
 		require('http').createServer(function (req, res) {
 			res.writeHead(200, {'Content-Type': 'text/plain'});
-			res.end(JSON.stringify(data.body.results[0].data));
+
+			var body = [];
+			data.forEach(function(row) {
+				var obj = {};
+
+				const eventIndex = 0;
+				obj.eventName = row.row[eventIndex].name;
+				obj.eventStart = row.row[eventIndex].startTime;
+				obj.eventEnd = row.row[eventIndex].endTime;
+
+				const activityIndex = 1;
+				obj.activityName = row.row[activityIndex].name;
+				obj.activityStart = row.row[activityIndex].startTime;
+				obj.activityEnd = row.row[activityIndex].endTime;
+				obj.activityLocation = row.row[activityIndex].location;
+
+				const eventLocationIndex = 2;
+				obj.eventLocationName = row.row[eventLocationIndex].name;
+
+				const activityLocationIndex = 3;
+				obj.activityLocationName = row.row[activityLocationIndex].name;
+				obj.activityLocationX = row.row[activityLocationIndex].x;
+				obj.activityLocationY = row.row[activityLocationIndex].y;
+
+				body.push(obj);
+			});
+			res.end(JSON.stringify(body));
 		}).listen(80, '127.0.0.1');
 
 		console.log('Server started at localhost:80!');
