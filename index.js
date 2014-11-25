@@ -16,7 +16,7 @@
 		var data = data.body.results[0].data;
 
 		require('http').createServer(function (req, res) {
-			res.writeHead(200, {'Content-Type': 'text/plain'});
+			res.writeHead(200, {'Content-Type': 'application/json'});
 
 			var body = [];
 			data.forEach(function(row) {
