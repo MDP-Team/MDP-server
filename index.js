@@ -24,13 +24,13 @@
 
 				const eventIndex = 0;
 				obj.eventName = row.row[eventIndex].name;
+				obj.eventDesc = row.row[eventIndex].description;
 				obj.eventStart = row.row[eventIndex].startTime;
-				obj.eventEnd = row.row[eventIndex].endTime;
 
 				const activityIndex = 1;
 				obj.activityName = row.row[activityIndex].name;
+				obj.activityDesc = row.row[activityIndex].description;
 				obj.activityStart = row.row[activityIndex].startTime;
-				obj.activityEnd = row.row[activityIndex].endTime;
 				obj.activityLocation = row.row[activityIndex].location;
 
 				const eventLocationIndex = 2;
